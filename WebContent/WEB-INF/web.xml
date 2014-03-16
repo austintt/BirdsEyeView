@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SignIn</display-name>
+    <servlet-name>SignIn</servlet-name>
+    <servlet-class>birdseye.SignIn</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignIn</servlet-name>
+    <url-pattern>/SignIn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Callback</display-name>
+    <servlet-name>Callback</servlet-name>
+    <servlet-class>birdseye.Callback</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Callback</servlet-name>
+    <url-pattern>/Callback</url-pattern>
+  </servlet-mapping>
 </web-app>
