@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import twitter4j.auth.AccessToken;
 
 public class SignIn extends HttpServlet {
     private static final long serialVersionUID = -6205814293093350242L;
@@ -30,7 +31,7 @@ public class SignIn extends HttpServlet {
 
 
             //Gets the OAuth access token added to the callback
-            RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
+            requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
             String verifier = request.getParameter("oauth_verifier");
             try {
                 twitter.getOAuthAccessToken(requestToken, verifier);
@@ -49,8 +50,8 @@ public class SignIn extends HttpServlet {
     //TODO: This will access our SQL database to grab tokens for users that have already logged on.
     private static AccessToken loadAccessToken(int useId){
         //SELECT token, tokenSecret FROM user WHERE userId = useId
-        String token = ""// user.token
-        String tokenSecret = ""// user.tokenSecret
+        String token = "";// user.token
+        String tokenSecret = "";// user.tokenSecret
         return new AccessToken(token, tokenSecret);
   }
 }
