@@ -1,33 +1,25 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" ng-app="birdsEye">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>BigVideo.js - The jQuery Plugin for Big Background Video</title>
-    <meta name="description" content="BigVideo.js - The jQuery Plugin for Big Background Video" />
-    <meta name="author" content="John Polacek" />
-    <meta name="viewport" content="width=device-width">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ' rel='stylesheet' type='text/css'>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Bird's Eye View</title>
 
     <!--JS-->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="frameworks/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
-    <script src="frameworks/imagesloaded-master/imagesloaded.js"></script>
-    <script src="//vjs.zencdn.net/4.3/video.js"></script>
-    <script src="frameworks/bigVid/lib/bigvideo.js"></script>
+    <script src="frameworks/angular.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 
     <!--CSS-->
-    <link href="frameworks/bigVid/css/bigvideo.css" rel="stylesheet">
     <link href="style/bootstrap/css/bootstrap.css" rel="stylesheet">
     <script type="text/javascript" src="style/bootstrap/js/bootstrap.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="style/style.css" rel="stylesheet">
-    <link href="style/login.css" rel="stylesheet">
+    
 </head>
-<body>
-
+<body ng-controller="eyeCtrl">
+  <div class="container">
     <div class="navbar navbar-default">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -72,65 +64,126 @@
         </ul>
       </div>
     </div> <!--END NAVBAR-->
-        <div class="col-lg-12">
-                <div class="bs-component login">
-                  <div class="panel login panel-primary">
-                    <div class="panel-heading">
-                      <h3 class="panel-title"><a href="SignIn">Login with Twitter!</a></h3>
-                    </div>
-                  </div>
-                </div>
-        </div>
-
-    <div class="main">
-
-        <div id="tips" class="space">
-           
-        </div>
-
-        <div id="tips" class="space">
-            
-        </div>
+    <div class="col-lg-12 titleBox">
+      <h1>{{test}}</h1>
     </div>
+    <div class="col-lg-4">
+            <div class="bs-component">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel primary</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
 
-    
-    <!-- Demo -->
-    <script>
-        var BV;
-        $(function() {
-            
-            // initialize BigVideo
-            BV = new $.BigVideo();
-            BV.init();
-            BV.show('http://vjs.zencdn.net/v/oceans.mp4',{ambient:true});
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel success</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
 
-            // Playlist button click starts video
-            $('.playlist-btn').on('click', function(e) {
-                e.preventDefault();
-                BV.show($(this).attr('href'));
-            })
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel warning</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel danger</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel primary</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
 
-            // Video Play/Pause toggle
-            $('#video-toggle').on('click', function(e) {
-                if (this.checked)   BV.getPlayer().play();
-                else                BV.getPlayer().pause();
-            })
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel success</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
 
-            // set up navigation
-            $('.nav-link').on('click',function(e){
-                e.preventDefault();
-                scrollToSection($(this).attr('href'));
-            })
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel warning</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel danger</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel primary</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
 
-            function scrollToSection(id) {
-                $('body,html').animate({scrollTop: $(id).offset().top - 50}, 400);
-            }
-        });
-    </script>
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel success</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
 
-    <!-- 
-        BigVideo.js Analytics to see how many people are visiting our project page.
-        Do not use this code on your site unless you want to show up on our Google Analytics account :)
-     -->
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel warning</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel danger</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+  </div>
+
 </body>
 </html>
