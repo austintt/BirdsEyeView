@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+    pageEncoding="US-ASCII"%>
 <!DOCTYPE html>
 <html lang="en" ng-app="birdsEye">
 <head>
@@ -20,18 +22,20 @@
 </head>
 <body ng-controller="eyeCtrl">
   <div class="container">
-    <div class="navbar navbar-default">
+     <div class="navbar navbar-default">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Bird's Eye View</a>
+        <div class="brandHolder">
+          <a class="navbar-brand" href="#"> <img src="assets/mascot.png" class="mediumPic" alt=""> Bird's Eye View</a>
+        </div>
       </div>
       <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Command Center</a></li>
+          <li class="active"><a href="#">Active</a></li>
           <li><a href="#">Link</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>

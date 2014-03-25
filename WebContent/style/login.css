@@ -79,3 +79,14 @@ pre {
     opacity:.8;
     text-shadow: 1px 1px 1px rgba(0,0,0,.8);
 }
+
+.signin {
+    width: 14em;
+    height: 2em;
+    font-size: 2em;
+}
+
+.navbar-brand {
+    font-family:'Source Sans Pro', sans-serif; font-weight:900; 
+    text-transform:uppercase;
+}

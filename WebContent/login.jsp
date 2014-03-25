@@ -31,7 +31,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Bird's Eye View</a>
+        <div class="brandHolder">
+          <a class="navbar-brand" href="#"> <img src="assets/mascot.png" class="mediumPic" alt=""> Bird's Eye View</a>
+        </div>
       </div>
       <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
@@ -70,7 +72,7 @@
     </div> <!--END NAVBAR-->
         <div class="col-lg-12">
                 <div class="bs-component login">
-                    <a href="SignIn"><button type="button" class="btn btn-primary">Login with Twitter!</button></a>
+                    <a href="SignIn"><button type="button" class="btn btn-primary signin"><img src="assets/twitterWhite.png" class="smallPic" alt=""> Login with Twitter!</button></a>
                 </div>
 
         </div>
