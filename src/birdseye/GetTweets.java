@@ -57,7 +57,7 @@ public class GetTweets extends HttpServlet {
 
 	    // Filter
 	    FilterQuery filterQ = new FilterQuery();
-	    String keyword = request.getParameter("Obama");
+	    String keyword = request.getParameter("topic");
 	    String[] keywordsArray = { keyword };
 	    filterQ.track(keywordsArray);
 	    twitterStream.filter(filterQ); 
