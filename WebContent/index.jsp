@@ -50,8 +50,8 @@
             </ul>
           </li>
         </ul>
-        <form class="navbar-form navbar-left">
-          <input type="text" class="form-control col-lg-8" placeholder="Search">
+        <form name="search" class="navbar-form navbar-left" action="GetTweets" method="GET">
+          <input type="text" class="form-control col-lg-8" name="topic" placeholder="Search">
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Link</a></li>
@@ -188,6 +188,8 @@
 
 
   </div>
+<%
 
+%>
 </body>
 </html>
