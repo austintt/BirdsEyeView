@@ -53,7 +53,7 @@ public class FeedbackFilter {
 
     public boolean checkFilter(String content)
     {
-        ArrayList positive = WordList("PositiveWords.txt");
+        ArrayList positive = WordList("PositiveWords.txt"); // favor positive
         ArrayList negative = WordList("NegativeWords.txt");
         return PositiveFilter(positive) & NegativeFilter(negative);
     }
