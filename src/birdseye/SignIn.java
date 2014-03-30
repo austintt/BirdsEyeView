@@ -3,6 +3,7 @@ package birdseye;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.User;
 import twitter4j.auth.RequestToken;
 
 import javax.servlet.ServletException;
@@ -25,6 +26,7 @@ public class SignIn extends HttpServlet {
 
             RequestToken requestToken = twitter.getOAuthRequestToken(callbackURL.toString());
             request.getSession().setAttribute("requestToken", requestToken);
+            
             response.sendRedirect(requestToken.getAuthenticationURL());
 
         } catch (TwitterException e) {

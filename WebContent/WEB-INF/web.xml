@@ -29,4 +29,14 @@
     <servlet-name>Callback</servlet-name>
     <url-pattern>/Callback</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>GetTweets</display-name>
+    <servlet-name>GetTweets</servlet-name>
+    <servlet-class>birdseye.GetTweets</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetTweets</servlet-name>
+    <url-pattern>/GetTweets</url-pattern>
+  </servlet-mapping>
 </web-app>
