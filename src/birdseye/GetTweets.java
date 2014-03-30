@@ -17,6 +17,11 @@ public class GetTweets extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	//TODO allow parameter search in Sample
+    	//TODO connect through AJAX index to GetTweets
+    	//TODO call for tweets every 10 seconds
+    	//TODO display tweets
+    	
     	List<TweetData> statuses = new ArrayList();
     	String[] keywordsArray = { "obama" };
     	Sample sample = new Sample();
