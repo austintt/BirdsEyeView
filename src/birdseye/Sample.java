@@ -16,7 +16,11 @@ package birdseye;
  */
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import twitter4j.*;
+import twitter4j.conf.ConfigurationBuilder;
 
 /**
  * <p>This is a code example of Twitter4J Streaming API - sample method support.<br>
@@ -25,46 +29,88 @@ import twitter4j.*;
  *
  * @author Yusuke Yamamoto - yusuke at mac.com
  */
-public final class Sample {
-    /**
-     * Main entry of this application.
-     *
-     * @param args arguments doesn't take effect with this example
-     */
-    public static void main(String[] args) throws TwitterException {
-        TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
-        StatusListener listener = new StatusListener() {
-            @Override
-            public void onStatus(Status status) {
-                System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
-            }
+public class Sample {
 
-            @Override
-            public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
-                System.out.println("Got a status deletion notice id:" + statusDeletionNotice.getStatusId());
-            }
+	  public static void main(String[] args) throws TwitterException {
+	    Sample stream = new Sample();
+	    stream.execute();
+	  }
 
-            @Override
-            public void onTrackLimitationNotice(int numberOfLimitedStatuses) {
-                System.out.println("Got track limitation notice:" + numberOfLimitedStatuses);
-            }
+	  private final Object lock = new Object();
+	  public List<TweetData> execute() throws TwitterException {
 
-            @Override
-            public void onScrubGeo(long userId, long upToStatusId) {
-                System.out.println("Got scrub_geo event userId:" + userId + " upToStatusId:" + upToStatusId);
-            }
+	    final List<TweetData> statuses = new ArrayList();
 
-            @Override
-            public void onStallWarning(StallWarning warning) {
-                System.out.println("Got stall warning:" + warning);
-            }
+	    ConfigurationBuilder cb = new ConfigurationBuilder();
+	    cb.setOAuthAccessToken("14538839-3MX2UoCEUaA6u95iWoYweTKRbhBjqEVuK1SPbCjDV");
+	    cb.setOAuthAccessTokenSecret("nox7eYyOJpyiDiISHRDou90bGkHKasuw1IMqqJUZMaAbj");
 
-            @Override
-            public void onException(Exception ex) {
-                ex.printStackTrace();
-            }
-        };
-        twitterStream.addListener(listener);
-        twitterStream.sample();
-    }
-}
+	    TwitterStream twitterStream = new TwitterStreamFactory(cb.build())
+	        .getInstance();
+
+	    StatusListener listener = new StatusListener() {
+
+	      public void onStatus(Status status) {
+	    	String user    = status.getUser().getScreenName();
+	    	String content = status.getText();
+	    	TweetData newTweet = new TweetData(user, content);
+	    	
+	        statuses.add(newTweet);
+	        System.out.println(statuses.size() + ":" + status.getText());
+	        if (statuses.size() > 10) {
+	          synchronized (lock) {
+	            lock.notify();
+	          }
+	          System.out.println("unlocked");
+	        }
+	      }
+
+	      public void onDeletionNotice(
+	          StatusDeletionNotice statusDeletionNotice) {
+	        System.out.println("Got a status deletion notice id:"
+	            + statusDeletionNotice.getStatusId());
+	      }
+
+	      public void onTrackLimitationNotice(int numberOfLimitedStatuses) {
+	        System.out.println("Got track limitation notice:"
+	            + numberOfLimitedStatuses);
+	      }
+
+	      public void onScrubGeo(long userId, long upToStatusId) {
+	        System.out.println("Got scrub_geo event userId:" + userId
+	            + " upToStatusId:" + upToStatusId);
+	      }
+
+	      public void onException(Exception ex) {
+	        ex.printStackTrace();
+	      }
+
+	      @Override
+	      public void onStallWarning(StallWarning sw) {
+	        System.out.println(sw.getMessage());
+
+	      }
+	    };
+
+	    FilterQuery fq = new FilterQuery();
+	    String keywords[] = { "obama", "ncaa", "#pizza" };
+
+	    fq.track(keywords);
+
+
+	    twitterStream.addListener(listener);
+	    twitterStream.filter(fq);
+
+	    try {
+	      synchronized (lock) {
+	        lock.wait();
+	      }
+	    } catch (InterruptedException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    System.out.println("returning statuses");
+	    twitterStream.shutdown();
+	    return statuses;
+	  }
+	}
