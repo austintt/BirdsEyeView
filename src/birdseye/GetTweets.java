@@ -21,6 +21,7 @@ public class GetTweets extends HttpServlet {
     	//TODO connect through AJAX index to GetTweets
     	//TODO call for tweets every 10 seconds
     	//TODO display tweets
+    	response.setContentType("application/json");
     	
     	List<TweetData> statuses = new ArrayList();
     	String[] keywordsArray = { "obama" };
