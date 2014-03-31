@@ -24,6 +24,8 @@ public class GetTweets extends HttpServlet {
     	response.setContentType("application/json");
     	
     	List<TweetData> statuses = new ArrayList();
+    	List<TweetData> users = new ArrayList();
+    	List<TweetData> tweetText = new ArrayList();
     	String[] keywordsArray = { "obama" };
     	Sample sample = new Sample();
     	try {
@@ -32,9 +34,11 @@ public class GetTweets extends HttpServlet {
 			System.out.println("HERE!!!!");
 			for (int i = 0; i < statuses.size(); i++)
 			{
-				System.out.println(statuses.get(i).getUsername());
+				users.Add(statuses.get(i).getUsername());
+				tweetText.Add(statuses.get(i).getText());
 			}
-			request.getSession().setAttribute("statuses", statuses);
+			request.getSession().setAttribute("users", new Gson().toJson(users));
+			request.getSession().setAttribute("text", new Gson().toJson(tweetText));
 			response.sendRedirect("test.jsp");
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block
