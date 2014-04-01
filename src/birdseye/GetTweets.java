@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +37,8 @@ public class GetTweets extends HttpServlet {
 			System.out.println("HERE!!!!");
 			for (int i = 0; i < statuses.size(); i++)
 			{
-				users.Add(statuses.get(i).getUsername());
-				tweetText.Add(statuses.get(i).getText());
+				users.add(statuses.get(i).getUsername());
+				tweetText.add(statuses.get(i).getText());
 			}
 			request.getSession().setAttribute("users", new Gson().toJson(users));
 			request.getSession().setAttribute("text", new Gson().toJson(tweetText));
