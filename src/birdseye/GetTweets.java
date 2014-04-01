@@ -26,11 +26,11 @@ public class GetTweets extends HttpServlet {
     	List<TweetData> statuses = new ArrayList();
     	List<TweetData> users = new ArrayList();
     	List<TweetData> tweetText = new ArrayList();
-    	String[] keywordsArray = { "obama" };
+    	String keywordsArray = "obama";
     	Sample sample = new Sample();
     	try {
     		
-			statuses = sample.execute();
+			statuses = sample.execute(keywordsArray);
 			System.out.println("HERE!!!!");
 			for (int i = 0; i < statuses.size(); i++)
 			{
