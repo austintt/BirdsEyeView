@@ -37,7 +37,7 @@ public class Sample {
 	  }
 
 	  private final Object lock = new Object();
-	  public List<TweetData> execute() throws TwitterException {
+	  public List<TweetData> execute(String searchTerm) throws TwitterException {
 
 	    final List<TweetData> statuses = new ArrayList();
 
@@ -93,7 +93,7 @@ public class Sample {
 	    };
 
 	    FilterQuery fq = new FilterQuery();
-	    String keywords[] = { "obama", "ncaa", "#pizza" };
+	    String keywords = searchTerm;
 
 	    fq.track(keywords);
 
