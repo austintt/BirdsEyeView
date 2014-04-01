@@ -26,7 +26,7 @@ public class GetTweets extends HttpServlet {
     	List<TweetData> statuses = new ArrayList();
     	List<TweetData> users = new ArrayList();
     	List<TweetData> tweetText = new ArrayList();
-    	String keywordsArray = "obama";
+    	String keywordsArray = request.getParameter("topic");
     	Sample sample = new Sample();
     	try {
     		
