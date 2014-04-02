@@ -27,8 +27,8 @@ public class GetTweets extends HttpServlet {
     	response.setContentType("application/json");
     	
     	List<TweetData> statuses = new ArrayList();
-    	List<TweetData> users = new ArrayList();
-    	List<TweetData> tweetText = new ArrayList();
+    	List<String> users = new ArrayList();
+    	List<String> tweetText = new ArrayList();
     	String keywordsArray = request.getParameter("topic");
     	Sample sample = new Sample();
     	try {
