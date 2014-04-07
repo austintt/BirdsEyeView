@@ -33,11 +33,11 @@ public class Sample {
 
 	  public static void main(String[] args) throws TwitterException {
 	    Sample stream = new Sample();
-	    stream.execute();
+	    stream.execute(args);
 	  }
 
 	  private final Object lock = new Object();
-	  public List<TweetData> execute(String searchTerm) throws TwitterException {
+	  public List<TweetData> execute(String[] args) throws TwitterException {
 
 	    final List<TweetData> statuses = new ArrayList();
 
@@ -93,7 +93,7 @@ public class Sample {
 	    };
 
 	    FilterQuery fq = new FilterQuery();
-	    String keywords = searchTerm;
+	    String[] keywords = args;
 
 	    fq.track(keywords);
 

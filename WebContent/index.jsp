@@ -53,7 +53,7 @@
         <form name="search" class="navbar-form navbar-left" action="GetTweets" method="GET">
           <input type="text" class="form-control col-lg-8" name="topic" placeholder="Search">
         </form>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right"> 
           <li><a href="#">Link</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -188,23 +188,6 @@
 
 
   </div>
-  <script type="text/javascript">
-          var frm = $('#submitPiano');
-          frm.submit(function (ev) {
-              ev.preventDefault();
-              $.ajax({
-                  type: frm.attr('method'),
-                  url: frm.attr('action'),
-                  data: frm.serialize(),
-                  success: function (data) {
-                      console.log(data);
-                      window.location.reload();
-              }
-          });
-
-          
-          });
-        </script>
 <%
 
 %>

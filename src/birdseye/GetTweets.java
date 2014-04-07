@@ -29,7 +29,9 @@ public class GetTweets extends HttpServlet {
     	List<TweetData> statuses = new ArrayList<TweetData>();
     	List<String> users = new ArrayList<String>();
     	List<String> tweetText = new ArrayList<String>();
-    	String keywordsArray = request.getParameter("topic");
+    	String tempTopic = request.getParameter("topic");
+    	String keywordsArray[] = new String[3];
+    	keywordsArray[0] = tempTopic;
     	
     	//TODO test if this works
     	//String[] keywordsArray = request.getParameter("topic").split(" ");
