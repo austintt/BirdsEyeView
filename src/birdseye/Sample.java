@@ -57,7 +57,7 @@ public class Sample {
 	    	
 	        statuses.add(newTweet);
 	        System.out.println(statuses.size() + ":" + status.getText());
-	        if (statuses.size() > 10) {
+	        if (statuses.size() > 15) {
 	          synchronized (lock) {
 	            lock.notify();
 	          }

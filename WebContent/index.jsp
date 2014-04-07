@@ -35,161 +35,37 @@
       </div>
       <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Active</a></li>
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Dropdown header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="#">Search</a></li>
+          
         </ul>
-        <form name="search" class="navbar-form navbar-left" action="GetTweets" method="GET">
-          <input type="text" class="form-control col-lg-8" name="topic" placeholder="Search">
+        <form name="search" id="search" class="navbar-form navbar-left">
+          <input type="text" class="form-control col-lg-8" name="topic" id="topic" placeholder="Search" ng-model="formSearch" ng-model-instant>
         </form>
         <ul class="nav navbar-nav navbar-right"> 
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
+          <li><a href="http://ec2-50-112-185-93.us-west-2.compute.amazonaws.com/landing-page/birdApp.html">About</a></li>
         </ul>
       </div>
     </div> <!--END NAVBAR-->
     <div class="col-lg-12 titleBox">
       <h1>{{test}}</h1>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4" ng-repeat="tweet in tweets">
             <div class="bs-component">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Panel primary</h3>
+                  <h3 class="panel-title">{{tweet.username}}</h3>
                 </div>
                 <div class="panel-body">
-                  Panel content
+                  {{tweet.text}}
                 </div>
               </div>
 
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel success</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-
-              <div class="panel panel-warning">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel warning</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-              <div class="panel panel-danger">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel danger</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
+              
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel primary</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
 
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel success</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-
-              <div class="panel panel-warning">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel warning</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-              <div class="panel panel-danger">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel danger</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel primary</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel success</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-
-              <div class="panel panel-warning">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel warning</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-              <div class="panel panel-danger">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel danger</h3>
-                </div>
-                <div class="panel-body">
-                  Panel content
-                </div>
-              </div>
-            </div>
-          </div>
 
 
   </div>
-<%
-
-%>
 </body>
 </html>
