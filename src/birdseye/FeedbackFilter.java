@@ -10,12 +10,20 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author Kyle
  */
 public class FeedbackFilter {
+    private ArrayList positive;
+    private ArrayList negative;
+    public FeedbackFilter()
+    {
+      positive = WordList("PositiveWords.txt"); // favor positive
+      negative = WordList("NegativeWords.txt"); 
+    }
     private ArrayList WordList(String Filename)
     {
         ArrayList wordlist = new ArrayList();
@@ -41,21 +49,39 @@ public class FeedbackFilter {
  }
    
 
-    public boolean PositiveFilter(ArrayList PosWords)
+    public int PositiveFilter(ArrayList PosWords, String text)
     {   
-        return true;
+        ArrayList<String> parsedText = new ArrayList<String>(Arrays.asList(text.split(" ")));
+        int positiveWord = 0;
+        for(int i = 0; i < parsedText.size(); i++)
+        {
+            for(int j = 0; j < PosWords.size(); j++)
+            {
+                if (parsedText.get(i).equals(PosWords.get(j)))
+                    positiveWord++;
+            }
+        }
+        return positiveWord;
     }
 
-    public boolean NegativeFilter(ArrayList NegWords)
+    public int NegativeFilter(ArrayList NegWords, String text)
     {
-        return false;
+        ArrayList<String> parsedText = new ArrayList<String>(Arrays.asList(text.split(" ")));
+        int negativeWord = 0;
+        for(int i = 0; i < parsedText.size(); i++)
+        {
+            for(int j = 0; j < NegWords.size(); j++)
+            {
+                if (parsedText.get(i).equals(NegWords.get(j)))
+                    negativeWord++;
+            }
+        }
+        return negativeWord;
     }
 
     public boolean checkFilter(String content)
     {
-        ArrayList positive = WordList("PositiveWords.txt"); // favor positive
-        ArrayList negative = WordList("NegativeWords.txt");
-        return PositiveFilter(positive) & NegativeFilter(negative);
+        return PositiveFilter(positive, content) >= NegativeFilter(negative, content);
     }
     
     
